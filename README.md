@@ -12,3 +12,7 @@ Note, that I am trying to do no server arhitecture, with automatic adding new wo
 
 ## What I can to other way? 
 I will be gracefull for all you tips and fixed. But please do not adwice me to solve my problem easily, I am doing this project for education. The best help for me wold finding wrong way of using techologies, patterns I used.  
+
+## Dependencies:
+- boost version boost-bin-boost-1.62 
+- flatbuffers [v1.6.0](https://github.com/google/flatbuffers/releases/tag/v1.6.0)
