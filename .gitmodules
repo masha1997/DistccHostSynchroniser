@@ -1,0 +1,3 @@
+[submodule "Synca"]
+	path = Synca
+	url = https://github.com/alexkutsan/Synca
