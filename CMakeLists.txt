@@ -1,8 +1,8 @@
 project(distcc_host_synchroniser)
 cmake_minimum_required(VERSION 2.8)
 
-set (BOOST_HOME CACHE STRING "Path to custom boost")
 
+set (BOOST_HOME CACHE STRING "Path to custom boost")
 if(BOOST_HOME STREQUAL "")
    message (STATUS "BOOST_HOME is empty. Use system Boost")
 else()
@@ -12,7 +12,9 @@ else()
   set(BOOST_LIBRARY_DIRS ${BOOST_ROOT}/lib)
 endif()
 
-find_package(Boost REQUIRED COMPONENTS coroutine thread system filesystem)
+find_package(Boost REQUIRED COMPONENTS system coroutine thread filesystem)
+
+add_subdirectory(Synca)
 
 INCLUDE_DIRECTORIES(
     ${BOOST_INCLUDE_DIRS}
@@ -20,7 +22,9 @@ INCLUDE_DIRECTORIES(
     ./
 )
 
+message (${Boost_LIBRARIES})
 set ( LIBRARIES
+    synca
     ${Boost_LIBRARIES}
 )
 
@@ -35,12 +39,9 @@ set (SRC_LIST
     rpc/impl/src/remove_node_request.cc
     rpc/impl/src/out_of_date_notification.cc
     rpc/impl/src/rpc_factory_impl.cc
-
-    Synca/dispatcher.cpp
-    Synca/task.cpp
 )
-
 
 set (CMAKE_CXX_STANDARD 14)
 add_executable(${PROJECT_NAME} ${SRC_LIST})
 target_link_libraries(${PROJECT_NAME} ${LIBRARIES})
+
