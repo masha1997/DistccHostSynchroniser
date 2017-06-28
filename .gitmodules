@@ -1,3 +1,6 @@
 [submodule "Synca"]
 	path = Synca
 	url = https://github.com/alexkutsan/Synca
+[submodule "flatbuffers"]
+	path = flatbuffers
+	url = https://github.com/google/flatbuffers
