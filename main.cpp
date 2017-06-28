@@ -9,7 +9,6 @@
 #include "rpc/impl/rpc_factory_impl.h"
 #include "nodes/impl/node_db_impl.h"
 
-
 class ClientProcessor {
 public:
     ClientProcessor(synca::Dispatcher& io_dispatcher):
@@ -47,6 +46,7 @@ private:
 int main() {
     synca::Dispatcher io_dispatcher;
     ClientProcessor client_processor(io_dispatcher);
+
     io_dispatcher.defer([&io_dispatcher, &client_processor]{
         net::ServerImpl acceptor(io_dispatcher);
         while(true) {
